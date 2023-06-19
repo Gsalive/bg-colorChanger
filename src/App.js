@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useState } from 'react';
+import ColorPicker from './Components/ColorPicker';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+
+const App = () => {
+  const colors = ['#9FECF1','#DFFDFF','#BDB2FF','#FAD1FA','#FEC868'];
+  const [backgroundColor, setBackgroundColor] = useState(null);
+
+  const handleColorChange = (color) => {
+    setBackgroundColor(color);
+    document.body.style.backgroundColor = color;
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div >
+   
+    <ColorPicker colors={colors}   onColorChange={handleColorChange} />
+    
+  </div>
   );
-}
+};
 
 export default App;
